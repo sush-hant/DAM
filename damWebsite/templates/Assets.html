@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if result is not list %}
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th>AssetID</th>
+          <th>ImageName</th>
+          <th>Link</th>
+          <th>Uploaded Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for values in results %}
+          <tr>
+            {% for value in values %}
+              <td>{{ value }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No asset found.</p>
+  {% endif %}
+{% endblock %}

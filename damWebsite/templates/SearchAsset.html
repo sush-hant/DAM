@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1><center>Search Asset</center></h1>
+
+<center>
+  <form method="post" action="{% url 'Assets' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+  <center><button class="btn btn-outline-success" type="submit">Search</button></center>
+    <br>
+      <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="Locations">
+        <option selected>Locations</option>
+        {% for locationid, locationdescription in Locations %}
+          <option><a class="dropdown-item" href="#">{{ locationdescription }}</a></option>
+        {% endfor %}
+      </select>
+      <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="Actions">
+        <option selected>Actions</option>
+        {% for actionid, actiondescription in Actions %}
+          <option><a class="dropdown-item" href="#">{{ actiondescription }}</a></option>
+        {% endfor %}
+      </select>
+      <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="Emotions">
+        <option selected>Emotions</option>
+        {% for emotionid,edescription in Emotions %}
+          <option><a class="dropdown-item" href="#">{{ edescription }}</a></option>
+        {% endfor %}
+      </select>
+      <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="Scenarios">
+        <option selected>Scenarios</option>
+        {% for scenarioid,sdescription in Scenarios %}
+          <option><a class="dropdown-item" href="#">{{ sdescription }}</a></option>
+        {% endfor %}
+      </select>
+    </form>
+    
+</center>
+
+{% endblock %}
+
